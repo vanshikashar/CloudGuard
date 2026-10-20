@@ -1,5 +1,4 @@
-@'
-require("dotenv").config();
+﻿require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
@@ -7,7 +6,6 @@ const helmet = require("helmet");
 
 const app = express();
 const PORT = Number(process.env.PORT || 5000);
-
 const DRY_RUN = process.env.DRY_RUN !== "false";
 
 app.disable("x-powered-by");
@@ -37,9 +35,7 @@ app.get("/api/safety", (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).json({
-    error: "Endpoint not found"
-  });
+  res.status(404).json({ error: "Endpoint not found" });
 });
 
 app.listen(PORT, "127.0.0.1", () => {
@@ -47,4 +43,3 @@ app.listen(PORT, "127.0.0.1", () => {
   console.log(`Dry-run mode: ${DRY_RUN}`);
   console.log("AWS resource modifications are not implemented.");
 });
-'@ | Set-Content -Encoding utf8 server.js
